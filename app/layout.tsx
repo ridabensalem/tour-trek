@@ -1,8 +1,7 @@
 import './styles/globals.css'
-import {Fira_Code} from 'next/font/google'
-
-// const inter = Inter({ subsets: ['latin'] })
-const mainFont =Fira_Code({ subsets: ['latin'] })
+import {Nunito} from 'next/font/google'
+import Navbar from './components/navbar/Navbar'
+const mainFont =Nunito({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Tour Trek',
@@ -16,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={mainFont.className}>{children}</body>
+      <body >
+        <Navbar />
+        {children}</body>
     </html>
   )
 }
