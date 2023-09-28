@@ -1,59 +1,150 @@
 'use client';
-import { BiBuildingHouse } from 'react-icons/bi';
-import { SlMenu } from 'react-icons/sl';
-import Avatar from '../Avatar';
-import { useState } from 'react';
 
-const UserMenu = () => {
+import { useCallback, useState } from "react";
+import { AiOutlineMenu } from "react-icons/ai";
+import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
+import useLoginModal from "@/app/hooks/useLoginModal";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useRentModal from "@/app/hooks/useRentModal";
+import { SafeUser } from "@/app/types";
+
+import MenuItem from "./MenuItem";
+import Avatar from "../Avatar";
+
+interface UserMenuProps {
+  currentUser?: SafeUser | null
+}
+
+const UserMenu: React.FC<UserMenuProps> = ({
+  currentUser
+}) => {
+  const router = useRouter();
+
+  const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
+  const rentModal = useRentModal();
+
   const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <div className="user_menu relative ">
-      <div className="flex flex-row items-center gap-7 ">
-        <div
-          onClick={() => {}}
-          className="house_hub px-3 py-3 text-base font-medium transition cursor-pointer hover:bg-gray-200 rounded-full"
-        >
-          <div className="flex flex-row gap-2   ">
-            <BiBuildingHouse className="text-gray-600" size={22} /> House Hub
-          </div>
-        </div>
-        <div
-          onClick={() => setIsOpen(!isOpen)}
-          className="menu border-[1px] px-3 py-3 text-sm font-medium transition cursor-pointer hover:bg-gray-200 rounded-full"
-        >
-          <div className="flex flex-row gap-6  ">
-            <SlMenu className="text-gray-600" size={14} />
-          </div>
-          {isOpen && (
-            <div>
-              <div className="absolute top-16 right-0 w-48 bg-white rounded-lg shadow-lg py-2 z-10">
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white"
-                >
-                  Link #1
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white"
-                >
-                  Link #2
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white"
-                >
-                  Link #3
-                </a>
-              </div>
-            </div>
-          )}
-        </div>
-        <Avatar />
-      </div>
-    </div>
-  );
-};
+  const toggleOpen = useCallback(() => {
+    setIsOpen((value) => !value);
+  }, []);
 
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+
+    rentModal.onOpen();
+  }, [loginModal, rentModal, currentUser]);
+
+  return ( 
+    <div className="relative">
+      <div className="flex flex-row items-center gap-3">
+        <div 
+          onClick={onRent}
+          className="
+            hidden
+            md:block
+            text-sm 
+            font-semibold 
+            py-3 
+            px-4 
+            rounded-full 
+            hover:bg-neutral-100 
+            transition 
+            cursor-pointer
+          "
+        >
+          Airbnb your home
+        </div>
+        <div 
+        onClick={toggleOpen}
+        className="
+          p-4
+          md:py-1
+          md:px-2
+          border-[1px] 
+          border-neutral-200 
+          flex 
+          flex-row 
+          items-center 
+          gap-3 
+          rounded-full 
+          cursor-pointer 
+          hover:shadow-md 
+          transition
+          "
+        >
+          <AiOutlineMenu />
+          <div className="hidden md:block">
+            <Avatar src={currentUser?.image} />
+          </div>
+        </div>
+      </div>
+      {isOpen && (
+        <div 
+          className="
+            absolute 
+            rounded-xl 
+            shadow-md
+            w-[40vw]
+            md:w-3/4 
+            bg-white 
+            overflow-hidden 
+            right-0 
+            top-12 
+            text-sm
+          "
+        >
+          <div className="flex flex-col cursor-pointer">
+            {currentUser ? (
+              <>
+                <MenuItem 
+                  label="My trips" 
+                  onClick={() => router.push('/trips')}
+                />
+                <MenuItem 
+                  label="My favorites" 
+                  onClick={() => router.push('/favorites')}
+                />
+                <MenuItem 
+                  label="My reservations" 
+                  onClick={() => router.push('/reservations')}
+                />
+                <MenuItem 
+                  label="My properties" 
+                  onClick={() => router.push('/properties')}
+                />
+                <MenuItem 
+                  label="Airbnb your home" 
+                  onClick={rentModal.onOpen}
+                />
+                <hr />
+                <MenuItem 
+                  label="Logout" 
+                  onClick={() => signOut()}
+                />
+              </>
+            ) : (
+              <>
+                <MenuItem 
+                  label="Login" 
+                  onClick={loginModal.onOpen}
+                />
+                <MenuItem 
+                  label="Sign up" 
+                  onClick={registerModal.onOpen}
+                />
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+   );
+}
+ 
 export default UserMenu;
