@@ -13,8 +13,8 @@ import ClientOnly from './components/ClientOnly';
 import getCurrentUser from './actions/getCurrentUser';
 
 export const metadata = {
-  title: 'Airbnb',
-  description: 'Airbnb Clone',
+  title: 'Tour Trek ',
+  description: 'Tour Trek is  a platform that allows to book a hustle  and travel to your favorite places.',
 }
 
 const font = Nunito({ 
