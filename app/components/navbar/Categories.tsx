@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { TbBeach, TbMountain, TbPool } from 'react-icons/tb';
+import { TbBeach, TbMountain } from 'react-icons/tb';
 import { 
   GiBarn, 
   GiBoatFishing, 
@@ -10,12 +10,13 @@ import {
   GiCaveEntrance, 
   GiForestCamp, 
   GiIsland,
-  GiWindmill
+  GiTreehouse
 } from 'react-icons/gi';
-import { FaSkiing } from 'react-icons/fa';
 import { BsSnow } from 'react-icons/bs';
-import { IoDiamond } from 'react-icons/io5';
+import {MdTempleBuddhist} from 'react-icons/md';
 import { MdOutlineVilla } from 'react-icons/md';
+import {MdHouseboat} from 'react-icons/md';
+import {GiHabitatDome} from 'react-icons/gi';
 
 import CategoryBox from "../CategoryBox";
 import Container from '../Container';
@@ -25,32 +26,32 @@ export const categories = [
   {
     label: 'Beach',
     icon: TbBeach,
-    description: 'This property is close to the beach!',
+    description: 'it is near the beach!',
   },
   {
-    label: 'Windmills',
-    icon: GiWindmill,
-    description: 'This property is has windmills!',
+    label: 'Ryokan',
+    icon: MdTempleBuddhist,
+    description: 'Try a traditional Ryokan!',
   },
   {
     label: 'Modern',
     icon: MdOutlineVilla,
-    description: 'This property is modern!'
+    description: 'You will love this modern property!'
   },
   {
     label: 'Countryside',
     icon: TbMountain,
-    description: 'This property is in the countryside!'
+    description: 'Amazing sights in the country side!'
   },
   {
-    label: 'Pools',
-    icon: TbPool,
-    description: 'This is property has a beautiful pool!'
+    label: 'House boat',
+    icon: MdHouseboat,
+    description: 'Sail away on a house boat!'
   },
   {
     label: 'Islands',
     icon: GiIsland,
-    description: 'This property is on an island!'
+    description: 'Live on an island!'
   },
   {
     label: 'Lake',
@@ -58,44 +59,44 @@ export const categories = [
     description: 'This property is near a lake!'
   },
   {
-    label: 'Skiing',
-    icon: FaSkiing,
-    description: 'This property has skiing activies!'
+    label: 'Domes',
+    icon: GiHabitatDome,
+    description: 'Lovely domes!'
   },
   {
     label: 'Castles',
     icon: GiCastle,
-    description: 'This property is an ancient castle!'
+    description: 'The sense of royalty in this castle!'
   },
   {
     label: 'Caves',
     icon: GiCaveEntrance,
-    description: 'This property is in a spooky cave!'
+    description: 'Integrate with nature in this cave!'
   },
   {
     label: 'Camping',
     icon: GiForestCamp,
-    description: 'This property offers camping activities!'
+    description: 'Wonderful camping experience!'
   },
   {
     label: 'Arctic',
     icon: BsSnow,
-    description: 'This property is in arctic environment!'
+    description: ' great Arctic experience!'
   },
   {
     label: 'Desert',
     icon: GiCactus,
-    description: 'This property is in the desert!'
+    description: 'Try the life in the desert !'
   },
   {
     label: 'Barns',
     icon: GiBarn,
-    description: 'This property is in a barn!'
+    description: 'Live in a barn'
   },
   {
-    label: 'Lux',
-    icon: IoDiamond,
-    description: 'This property is brand new and luxurious!'
+    label: 'Tree house',
+    icon: GiTreehouse,
+    description: 'Enjoy the nature in this tree house! '
   }
 ]
 
