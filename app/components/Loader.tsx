@@ -1,21 +1,22 @@
 'use client';
 
-import { PuffLoader } from "react-spinners";
+import {BiLoaderAlt} from 'react-icons/bi';
 
 const Loader = () => {
   return ( 
     <div
-    className="
-      h-[70vh]
-      flex 
-      flex-col 
-      justify-center 
-      items-center 
-    "
+      className="
+        h-[70vh]
+        flex 
+        flex-col 
+        justify-center 
+        items-center 
+      "
     >
-      <PuffLoader
-        size={100}
+      <BiLoaderAlt
+        size={50}
         color="red"
+        className="animate-spin"
       />
     </div>
    );
