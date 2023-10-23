@@ -79,7 +79,7 @@ export const categories = [
     description: 'Wonderful camping experience!'
   },
   {
-    label: 'Arctic',
+    label: 'Snow',
     icon: BsSnow,
     description: ' great Arctic experience!'
   },
