@@ -13,8 +13,11 @@ import ClientOnly from './components/ClientOnly';
 import getCurrentUser from './actions/getCurrentUser';
 
 export const metadata = {
-  title: 'Tour Trek ',
-  description: 'Tour Trek is  a platform that allows to book a hustle  and travel to your favorite places.',
+  title: 'Tour Trek - Book Your Next Adventure',
+  description: 'Tour Trek is a platform that allows you to book hassle-free travel to your favorite destinations. Explore the world with Tour Trek!',
+  authors: [{name: 'rida bensalem'}],
+  keywords: ['travel', 'tour', 'trek', 'adventure', 'book', 'explore', 'world', 'hassle-free', 'destinations', 'platform', 'tour trek', 'tour trek travel', 'tour trek platform', 'tour trek destinations']
+  
 }
 
 const font = Nunito({ 
