@@ -14,7 +14,6 @@ import {
 
 import HeartButton from "../HeartButton";
 import Button from "../Button";
-import ClientOnly from "../ClientOnly";
 
 interface ListingCardProps {
   data: SafeListing;
@@ -39,6 +38,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   const { getByValue } = useCountries();
 
   const location = getByValue(data.locationValue);
+  
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -50,6 +50,11 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
     onAction?.(actionId)
   }, [disabled, onAction, actionId]);
+
+  const title = useMemo(() => {
+
+    return data.title;
+  }, [data.title]);
 
   const price = useMemo(() => {
     if (reservation) {
@@ -108,18 +113,21 @@ const ListingCard: React.FC<ListingCardProps> = ({
             />
           </div>
         </div>
-        <div className="font-semibold text-lg">
+        <div className="font-semibold text-base">
+          {title}
+        </div>
+        <div className="font-light text-sm">
           {location?.region}, {location?.label}
         </div>
         <div className="font-light text-neutral-500">
           {reservationDate || data.category}
         </div>
         <div className="flex flex-row items-center gap-1">
-          <div className="font-semibold">
-            $ {price}
+          <div className="font-semibold text-rose-500">
+             $ {price}
           </div>
           {!reservation && (
-            <div className="font-light">night</div>
+            <div className="font-light">per night  </div>
           )}
         </div>
         {onAction && actionLabel && (
