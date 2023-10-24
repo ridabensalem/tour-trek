@@ -79,9 +79,9 @@ export const categories = [
     description: 'Wonderful camping experience!'
   },
   {
-    label: 'Snow',
+    label: 'Arctic',
     icon: BsSnow,
-    description: ' great Arctic experience!'
+    description: ' Enjoy snowy places !'
   },
   {
     label: 'Desert',
