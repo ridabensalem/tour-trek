@@ -15,7 +15,6 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [Queries screenshots](#queries)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -108,7 +107,7 @@ To run test for this project
 
 ```shell
 cd testing/
-rpec npm test 'tour-trek.test.js'
+ npm test 'tour-trek.test.js'
 ```
 
 
