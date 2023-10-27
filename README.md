@@ -64,7 +64,6 @@
 - **[View booking places on the map]**
 - **[Like favorite destinations]**
 - **[View the added rents ]**
-- **[Contact customer support]**
 
 
 
