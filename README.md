@@ -15,7 +15,6 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [Queries screenshots](#queries)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -31,7 +30,7 @@
 - [📝 License](#license)
 
 # 📖 [Tour Trek  ] <a name="about-project"></a>
-**[Tour Trek ]** is Tour Trek is a platform that allows you to book hassle-free travel to your favorite destinations. Explore the world with Tour Trek! . 
+**[Tour Trek ]**  is a platform that allows you to book  different houses and hassle travel to your favorite destinations. Explore the world with Tour Trek! 
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -65,7 +64,6 @@
 - **[View booking places on the map]**
 - **[Like favorite destinations]**
 - **[View the added rents ]**
-- **[Contact customer support]**
 
 
 
@@ -108,7 +106,7 @@ To run test for this project
 
 ```shell
 cd testing/
-rpec npm test 'tour-trek.test.js'
+ npm test 'tour-trek.test.js'
 ```
 
 
