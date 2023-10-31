@@ -66,7 +66,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
       if (!currentUser) {
         return loginModal.onOpen();
       }
-      setIsLoading(true);
+     
 
       axios.post('/api/reservations', {
         totalPrice,
@@ -77,6 +77,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
       .then(() => {
         toast.success('Listing reserved!');
         setDateRange(initialDateRange);
+        setIsLoading(true);
         router.push('/reservations');
       })
       .catch(() => {
