@@ -18,8 +18,8 @@ import { MdOutlineVilla } from 'react-icons/md';
 import {MdHouseboat} from 'react-icons/md';
 import {GiHabitatDome} from 'react-icons/gi';
 
-import CategoryBox from "../CategoryBox";
-import Container from '../Container';
+import CategoryBox from "../elementsUi/CategoryBox";
+import Container from '../elementsUi/Container';
 
 
 export const categories = [

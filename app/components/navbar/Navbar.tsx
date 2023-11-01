@@ -1,7 +1,7 @@
 import { SafeUser } from "@/app/types";
 
 import Categories from "./Categories";
-import Container from "../Container";
+import Container from "../elementsUi/Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";

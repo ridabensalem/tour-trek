@@ -15,7 +15,7 @@ import Counter from "../inputs/Counter";
 import CountrySelect, { 
   CountrySelectValue
 } from "../inputs/CountrySelect";
-import Heading from '../Heading';
+import Heading from '../elementsUi/Heading';
 
 enum STEPS {
   LOCATION = 0,
@@ -40,7 +40,7 @@ const SearchModal = () => {
     key: 'selection'
   });
 
-  const Map = useMemo(() => dynamic(() => import('../Map'), { 
+  const Map = useMemo(() => dynamic(() => import('../elementsUi/Map'), { 
     ssr: false 
   }), [location]);
 

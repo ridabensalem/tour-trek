@@ -10,7 +10,7 @@ import { differenceInDays, eachDayOfInterval } from 'date-fns';
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 
-import Container from "@/app/components/Container";
+import Container from "@/app/components/elementsUi/Container";
 import { categories } from "@/app/components/navbar/Categories";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
