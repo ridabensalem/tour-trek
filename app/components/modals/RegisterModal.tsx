@@ -17,8 +17,8 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 import Modal from "./Modal";
 import Input from "../inputs/Input";
-import Heading from "../Heading";
-import Button from "../Button";
+import Heading from "../elementsUi/Heading";
+import Button from "../elementsUi/Button";
 
 const RegisterModal= () => {
   const registerModal = useRegisterModal();
@@ -64,7 +64,7 @@ const RegisterModal= () => {
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="Welcome to Airbnb"
+        title="Welcome to Tour Trek "
         subtitle="Create an account!"
       />
       <Input
@@ -92,6 +92,15 @@ const RegisterModal= () => {
         errors={errors}
         required
       />
+       <div className="flex justify-between items-center">
+        <p>Already a  member?</p>
+        <a
+          className="text-blue-500 hover:underline cursor-pointer"
+          onClick={onToggle}
+        >
+        Log in 
+        </a>
+      </div>
     </div>
   )
 

@@ -17,8 +17,8 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 
 import Modal from "./Modal";
 import Input from "../inputs/Input";
-import Heading from "../Heading";
-import Button from "../Button";
+import Heading from "../elementsUi/Heading";
+import Button from "../elementsUi/Button";
 
 const LoginModal = () => {
   const router = useRouter();
@@ -90,6 +90,15 @@ const LoginModal = () => {
         errors={errors}
         required
       />
+      <div className="flex justify-between items-center">
+        <p>Not a member?</p>
+        <a
+          className="text-blue-500 hover:underline cursor-pointer"
+          onClick={onToggle}
+        >
+          Sign up
+        </a>
+      </div>
     </div>
   )
 

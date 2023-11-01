@@ -9,7 +9,7 @@ import RentModal from '@/app/components/modals/RentModal';
 import ToasterProvider from '@/app/providers/ToasterProvider';
 
 import './globals.css'
-import ClientOnly from './components/ClientOnly';
+import ClientOnly from './components/elementsUi/ClientOnly';
 import getCurrentUser from './actions/getCurrentUser';
 
 export const metadata = {

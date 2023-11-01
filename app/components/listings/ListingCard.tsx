@@ -12,8 +12,8 @@ import {
   SafeUser 
 } from "@/app/types";
 
-import HeartButton from "../HeartButton";
-import Button from "../Button";
+import HeartButton from "../elementsUi/HeartButton";
+import Button from "../elementsUi/Button";
 
 interface ListingCardProps {
   data: SafeListing;
@@ -101,6 +101,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
             "
             src={data.imageSrc}
             alt="Listing"
+            sizes="100%"
+            priority={true}
           />
           <div className="
             absolute

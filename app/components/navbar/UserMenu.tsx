@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -11,7 +11,7 @@ import useRentModal from "@/app/hooks/useRentModal";
 import { SafeUser } from "@/app/types";
 
 import MenuItem from "./MenuItem";
-import Avatar from "../Avatar";
+import Avatar from "../elementsUi/Avatar";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null
@@ -40,6 +40,21 @@ const UserMenu: React.FC<UserMenuProps> = ({
     rentModal.onOpen();
   }, [loginModal, rentModal, currentUser]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const menu = document.getElementById("user-menu");
+      if (menu && !menu.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return ( 
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
@@ -61,21 +76,22 @@ const UserMenu: React.FC<UserMenuProps> = ({
           Reserve your home
         </div>
         <div 
-        onClick={toggleOpen}
-        className="
-          p-4
-          md:py-1
-          md:px-2
-          border-[1px] 
-          border-neutral-200 
-          flex 
-          flex-row 
-          items-center 
-          gap-3 
-          rounded-full 
-          cursor-pointer 
-          hover:shadow-md 
-          transition
+          id="user-menu"
+          onClick={toggleOpen}
+          className="
+            p-4
+            md:py-1
+            md:px-2
+            border-[1px] 
+            border-neutral-200 
+            flex 
+            flex-row 
+            items-center 
+            gap-3 
+            rounded-full 
+            cursor-pointer 
+            hover:shadow-md 
+            transition
           "
         >
           <AiOutlineMenu />

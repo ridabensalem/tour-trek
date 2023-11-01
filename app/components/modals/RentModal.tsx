@@ -20,7 +20,7 @@ import CountrySelect from "../inputs/CountrySelect";
 import { categories } from '../navbar/Categories';
 import ImageUpload from '../inputs/ImageUpload';
 import Input from '../inputs/Input';
-import Heading from '../Heading';
+import Heading from '../elementsUi/Heading';
 
 enum STEPS {
   CATEGORY = 0,
@@ -68,7 +68,7 @@ const RentModal = () => {
   const bathroomCount = watch('bathroomCount');
   const imageSrc = watch('imageSrc');
 
-  const Map = useMemo(() => dynamic(() => import('../Map'), { 
+  const Map = useMemo(() => dynamic(() => import('../elementsUi/Map'), { 
     ssr: false 
   }), [location]);
 
