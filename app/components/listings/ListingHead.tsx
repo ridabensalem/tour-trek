@@ -5,8 +5,8 @@ import Image from "next/image";
 import useCountries from "@/app/hooks/useCountries";
 import { SafeUser } from "@/app/types";
 
-import Heading from "../Heading";
-import HeartButton from "../HeartButton";
+import Heading from "../elementsUi/Heading";
+import HeartButton from "../elementsUi/HeartButton";
 
 interface ListingHeadProps {
   title: string;
@@ -46,6 +46,9 @@ const ListingHead: React.FC<ListingHeadProps> = ({
           fill
           className="object-cover w-full"
           alt="Image"
+          sizes="100%"
+          quality={100}
+          priority={true}
         />
         <div
           className="
