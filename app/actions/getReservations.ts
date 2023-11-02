@@ -3,14 +3,13 @@ import prisma from "@/app/libs/prismadb";
 interface IParams {
   listingId?: string;
   userId?: string;
-  authorId?: string;
 }
 
 export default async function getReservations(
   params: IParams
 ) {
   try {
-    const { listingId, userId, authorId } = params;
+    const { listingId, userId } = params;
 
     const query: any = {};
         
