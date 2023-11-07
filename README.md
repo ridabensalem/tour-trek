@@ -29,7 +29,7 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 [Tour Trek  ] <a name="about-project"></a>
+# 📖 Tour Trek   <a name="about-project"></a>
 **[Tour Trek ]**  is a platform that allows you to book  different houses and hassle travel to your favorite destinations. Explore the world with Tour Trek! 
 
 ## 🛠 Built With <a name="built-with"></a>
