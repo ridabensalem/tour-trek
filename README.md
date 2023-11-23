@@ -102,7 +102,7 @@ Install this project with:
   - Run npm install after cloning the repo
 
 ### Run Tests
-To run test for this project
+To run tests for this project
 
 ```shell
 cd testing/
