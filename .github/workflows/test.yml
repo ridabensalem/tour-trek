@@ -1,0 +1,17 @@
+name: Run Unit Tests
+
+on: [push, pull_request] # Define the triggers for the workflow
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Unit Tests
+        run: npm test
