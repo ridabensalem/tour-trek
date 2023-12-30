@@ -2,7 +2,7 @@ module.exports = {
     testEnvironment: 'jsdom',
     transform: {
       // Use Next.js compiler for .ts and .tsx files
-      "^.+\\.(ts|tsx)$": "ts-jest",
+      '^.+\\.[tj]sx?$': 'babel-jest',
     },
     moduleNameMapper: {
       // Handle module aliases (if used)

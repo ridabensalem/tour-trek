@@ -6,6 +6,10 @@
       "dom.iterable",
       "esnext"
     ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./your/other/type/definitions" // Add other type roots if needed
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -36,6 +40,7 @@
     ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "cypress.config.ts"
   ]
 }
