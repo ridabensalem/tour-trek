@@ -6,10 +6,6 @@
       "dom.iterable",
       "esnext"
     ],
-    "typeRoots": [
-      "./node_modules/@types",
-      "./your/other/type/definitions" // Add other type roots if needed
-    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
