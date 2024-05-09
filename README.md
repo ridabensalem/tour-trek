@@ -97,7 +97,7 @@ https://github.com/ridabensalem/tour-trek.git```
 Install this project with:
 
 ` cd tour-trek`
-  - Run npm install after cloning the repo
+  - Run `npm install` after cloning the repo
 
 ### Run Tests
 To run tests for this project
@@ -106,7 +106,9 @@ To run tests for this project
 cd testing/
  npm test 'tour-trek.test.js'
 ```
+### Start Project 
 
+  - Run `npm run dev `
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
