@@ -1,13 +1,11 @@
 <a name="readme-top"></a>
 
-
 <div align="center">
   <br/>
-
+  
   <h3><b>Tour Trek README</b></h3>
 
 </div>
-
 
 # 📗 Table of Contents
 
@@ -29,7 +27,7 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 [Tour Trek  ] <a name="about-project"></a>
+# 📖 Tour Trek   <a name="about-project"></a>
 **[Tour Trek ]**  is a platform that allows you to book  different houses and hassle travel to your favorite destinations. Explore the world with Tour Trek! 
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -99,16 +97,18 @@ https://github.com/ridabensalem/tour-trek.git```
 Install this project with:
 
 ` cd tour-trek`
-  - Run npm install after cloning the repo
+  - Run `npm install` after cloning the repo
 
 ### Run Tests
-To run test for this project
+To run tests for this project
 
 ```shell
 cd testing/
  npm test 'tour-trek.test.js'
 ```
+### Start Project 
 
+  - Run `npm run dev `
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
