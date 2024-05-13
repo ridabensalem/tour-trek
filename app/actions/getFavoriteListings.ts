@@ -2,6 +2,8 @@ import prisma from "@/app/libs/prismadb";
 
 import getCurrentUser from "./getCurrentUser";
 
+//get the current session 
+
 export default async function getFavoriteListings() {
   try {
     const currentUser = await getCurrentUser();
