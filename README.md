@@ -107,15 +107,6 @@ npx prisma db push
 
 ```
 
-
-
-### Setup Prisma
-
-```shell
-npx prisma db push
-
-```
-
 ### Run Tests
 To run tests for this project
 
