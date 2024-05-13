@@ -99,6 +99,14 @@ Install this project with:
 ` cd tour-trek`
   - Run `npm install` after cloning the repo
 
+
+### Setup Prisma
+
+```shell
+npx prisma db push
+
+```
+
 ### Run Tests
 To run tests for this project
 
