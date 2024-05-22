@@ -87,6 +87,8 @@ export default async function getListings(params: IListingsParams) {
     // Retrieve listings from the database based on the query
     const listings = await prisma.listing.findMany({
       where: query,
+      //listing limit 
+      take: 50,
       orderBy: {
         createdAt: 'desc',
       },
