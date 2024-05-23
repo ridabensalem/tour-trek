@@ -4,7 +4,6 @@
   <br/>
   
   <h3><b>Tour Trek README</b></h3>
-
 </div>
 
 # 📗 Table of Contents
@@ -106,7 +105,6 @@ Install this project with:
 npx prisma db push
 
 ```
-
 
 ### Run Tests
 To run tests for this project
