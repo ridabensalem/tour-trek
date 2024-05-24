@@ -1,13 +1,18 @@
+import NavBarLandingpage from '@/app/components/navbar/NavBarLandingpage';
+import Headline from '../components/navbar/Headline';
+import Footer from '../components/navbar/Footer';
 
-import ClientOnly from "@/app/components/elementsUi/ClientOnly";
+const Page = async () => {
+    return (
+      <>
+        <NavBarLandingpage/>
+        <Headline/>
 
-const LandingPage = async () => {
 
-  return (
-    <ClientOnly>
-      <h1> Hello </h1>
-    </ClientOnly>
-  );
-}
- 
-export default LandingPage;
+
+        <Footer />
+      </>
+    );
+  }
+  
+  export default Page;
