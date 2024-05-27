@@ -1,7 +1,7 @@
 "use client";
 
 import { Nunito } from 'next/font/google'
-import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/router'; // Change import statement
 
 import Navbar from '@/app/components/navbar/Navbar';
 import LoginModal from '@/app/components/modals/LoginModal';
@@ -33,10 +33,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const pathname = usePathname();
+  const router = useRouter(); // Change variable name
 
   // Determine if the current path is the landing page
-  const isLandingPage = pathname === '/landingpage';
+  const isLandingPage = router.pathname === '/landingpage'; // Change pathname reference
 
   return (
     <html lang="en">
@@ -53,7 +53,7 @@ export default function RootLayout({
         <div className={isLandingPage ? "" : "pb-20 pt-28"}>
           {children}
         </div>
-          <Footer />
+          {isLandingPage ? '' : <Footer />}
       </body>
     </html>
   )
