@@ -49,8 +49,11 @@ const RegisterModal= () => {
       loginModal.onOpen();
     })
     .catch((error) => {
-      toast.error(error);
-    })
+      if (error.response && error.response.status === 400 ) {
+        toast.error('This email is already registered.');
+      } else {
+        toast.error('Registration failed. Please try other email!');
+      }    })
     .finally(() => {
       setIsLoading(false);
     })
