@@ -23,7 +23,16 @@ export async function POST(
    if (!listingId || !startDate || !endDate || !totalPrice) {
     return NextResponse.error();
   }
-
+// Check if listingid the same
+const listing = await prisma.listing.findUnique({
+  where: { id: listingId }
+});
+if (!listing) {
+  return NextResponse.error();
+}
+if (listing.userId === currentUser.id) {
+  return NextResponse.json({ error: 'You cannot reserve your own home' }, { status: 400 });
+}
   const listingAndReservation = await prisma.listing.update({
     where: {
       id: listingId
