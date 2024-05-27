@@ -21,6 +21,7 @@ const Page = async () => {
         <ListingInspiration/> 
         <SocialProof/> 
         <Footer />
+      </>
   );
 }
   
