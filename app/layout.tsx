@@ -9,6 +9,7 @@ import RegisterModal from '@/app/components/modals/RegisterModal';
 import SearchModal from '@/app/components/modals/SearchModal';
 import RentModal from '@/app/components/modals/RentModal';
 import NavBarLandingpage from './components/navbar/NavBarLandingpage';
+import Footer from './components/navbar/Footer';
 
 import ToasterProvider from '@/app/providers/ToasterProvider';
 
@@ -52,6 +53,7 @@ export default function RootLayout({
         <div className={isLandingPage ? "" : "pb-20 pt-28"}>
           {children}
         </div>
+          <Footer />
       </body>
     </html>
   )

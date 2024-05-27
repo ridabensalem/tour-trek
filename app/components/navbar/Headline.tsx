@@ -8,7 +8,7 @@ const Headline = () => {
   const text = "Embark on your adventure today – Book your journey now!";
 
   return (
-      <div className="bg-gradient-to-b from-blue-500 to-rose-200">
+      <div className="h-full bg-gradient-to-b from-blue-500 to-rose-200">
         <div className="flex flex-col items-center justify-center min-h-screen">
         <h1 className="text-4xl font-bold text-white mb-4">{title}</h1>
         <p className="text-lg text-white pb-12" >{text}</p>

@@ -55,7 +55,9 @@ const HomeSearch = () => {
     <div
       onClick={searchModal.onOpen}
       className="
+      bg-gray-100
         border-[1px] 
+        
         w-full md:w-auto 
         py-3 
         rounded-full 
