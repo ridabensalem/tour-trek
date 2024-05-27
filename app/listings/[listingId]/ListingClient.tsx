@@ -15,6 +15,8 @@ import { categories } from "@/app/components/navbar/Categories";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 import ListingReservation from "@/app/components/listings/ListingReservation";
+//import new component Listing trend
+// import TravelDestinationCards from "@/app/components/listings/ListingTrend";
 
 const initialDateRange = {
   startDate: new Date(),
