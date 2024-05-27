@@ -80,8 +80,12 @@ const ListingClient: React.FC<ListingClientProps> = ({
         setIsLoading(true);
         router.push('/reservations');
       })
-      .catch(() => {
-        toast.error('Something went wrong.');
+      .catch((error) => {
+        if (error.response && error.response.data && error.response.data.error === 'You cannot reserve your own home') {
+          toast.error('You cannot reserve your own home.');
+        } else {
+          toast.error('An error occurred while making the reservation.');
+        }
       })
       .finally(() => {
         setIsLoading(false);

@@ -90,6 +90,14 @@ const RentModal = () => {
   }
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    if (step === STEPS.LOCATION && !location) {
+      toast.error('Please select a location.');
+      return;
+    }
+    if (step === STEPS.IMAGES && !data.imageSrc) {
+      toast.error('Please upload an image of your place.');
+      return;
+    }
     if (step !== STEPS.PRICE) {
       return onNext();
     }
@@ -216,6 +224,7 @@ const RentModal = () => {
         <ImageUpload
           onChange={(value) => setCustomValue('imageSrc', value)}
           value={imageSrc}
+          
         />
       </div>
     )
