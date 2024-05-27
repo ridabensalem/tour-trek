@@ -1,6 +1,7 @@
 import NavBarLandingpage from '@/app/components/navbar/NavBarLandingpage';
 import Headline from '../components/navbar/Headline';
 import Footer from '../components/navbar/Footer';
+import SocialProof from '../components/navbar/SocialProof';
 
 const Page = async () => {
 
@@ -9,6 +10,7 @@ const Page = async () => {
       <>
         <NavBarLandingpage/>
         <Headline/>
+        <SocialProof/>
         <Footer />
         
       </>

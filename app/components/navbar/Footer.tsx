@@ -4,7 +4,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Footer = () => {
   return (
-    <footer className="relative bg-blueGray-200 pt-8 pb-6 bg-gradient-to-b from-gray-100 to-white">
+    <footer className="relative  pt-8 pb-6  -gray-bg300 ">
+      <hr className="my-6 border-blueGray-300" />
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap text-left lg:text-left">
           <div className="w-full lg:w-6/12 px-4">
