@@ -90,8 +90,9 @@ const RentModal = () => {
   }
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    // add conditoin for required the location and image
     if (step === STEPS.LOCATION && !location) {
-      toast.error('Please select a location.');
+      toast.error(' a location.');
       return;
     }
     if (step === STEPS.IMAGES && !data.imageSrc) {
