@@ -90,6 +90,24 @@ const LoginModal = () => {
         errors={errors}
         required
       />
+      
+    </div>
+  )
+  const footerContent = (
+    <div className="flex flex-col gap-4 mt-3">
+      <hr />
+      <Button 
+        outline 
+        label="Continue with Google"
+        icon={FcGoogle}
+        onClick={() => signIn('google')}
+      />
+      <Button 
+        outline 
+        label="Continue with Github"
+        icon={AiFillGithub}
+        onClick={() => signIn('github')}
+      />
       <div className="flex justify-between items-center">
         <p>Not a member?</p>
         <a
@@ -101,8 +119,6 @@ const LoginModal = () => {
       </div>
     </div>
   )
-
-
   return (
     <Modal
       disabled={isLoading}
@@ -112,6 +128,7 @@ const LoginModal = () => {
       onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
+      footer={footerContent}
     />
   );
 }
