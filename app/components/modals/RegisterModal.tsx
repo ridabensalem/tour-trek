@@ -95,6 +95,31 @@ const RegisterModal= () => {
         errors={errors}
         required
       />
+  </div>
+  )
+  const footerContent = (
+    <div className="flex flex-col gap-4 mt-3">
+      <hr />
+      <Button 
+        outline 
+        label="Continue with Google"
+        icon={FcGoogle}
+        onClick={() => signIn('google')} 
+      />
+      <Button 
+        outline 
+        label="Continue with Github"
+        icon={AiFillGithub}
+        onClick={() => signIn('github')}
+      />
+      <div 
+        className="
+          text-neutral-500 
+          text-center 
+          mt-4 
+          font-light
+        "
+      ></div>
        <div className="flex justify-between items-center">
         <p>Already a  member?</p>
         <a
@@ -105,6 +130,7 @@ const RegisterModal= () => {
         </a>
       </div>
     </div>
+    
   )
 
   return (
@@ -116,6 +142,7 @@ const RegisterModal= () => {
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
+      footer={footerContent}
     />
   );
 }
