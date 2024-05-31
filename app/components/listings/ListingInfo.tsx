@@ -94,5 +94,4 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
     </div>
    );
 }
- 
 export default ListingInfo;

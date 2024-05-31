@@ -39,20 +39,19 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
   const location = getByValue(data.locationValue);
   
-
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+      e.stopPropagation();
 
-    if (disabled) {
-      return;
-    }
+      if (disabled) {
+        return;
+      }
 
-    onAction?.(actionId)
-  }, [disabled, onAction, actionId]);
+      onAction?.(actionId)
+    }, [disabled, onAction, actionId]
+  );
 
   const title = useMemo(() => {
-
     return data.title;
   }, [data.title]);
 
@@ -115,21 +114,23 @@ const ListingCard: React.FC<ListingCardProps> = ({
             />
           </div>
         </div>
-        <div className="font-semibold text-base">
-          {title}
+        <div className="flex flex-col">
+          <div className="font-semibold text-base flex items-top h-[55px] line-clamp-1">
+            {title}
+          </div>
+          <div className="font-light text-base">
+            {location?.region}, {location?.label}
+          </div>
+          <div className="font-light text-neutral-500">
+            {reservationDate || data.category}
+          </div>
         </div>
-        <div className="font-light text-sm">
-          {location?.region}, {location?.label}
-        </div>
-        <div className="font-light text-neutral-500">
-          {reservationDate || data.category}
-        </div>
-        <div className="flex flex-row items-center gap-1">
+        <div className="flex flex-row items-center relative -top-2 gap-2">
           <div className="font-semibold text-rose-500">
              $ {price}
           </div>
           {!reservation && (
-            <div className="font-light">per night  </div>
+            <div className="font-light">per night</div>
           )}
         </div>
         {onAction && actionLabel && (
