@@ -3,11 +3,9 @@
 import React, { useState } from 'react';
 import Popup from '../elementsUi/Popup';
 
-interface SidebarProps {
-  onSelectSection: (section: string) => void; // Assuming 'section' is a string
-}
 
-const Sidebar: React.FC<SidebarProps> = ({ onSelectSection }) => {
+const Sidebar = () => {
+
   const [showPopup, setShowPopup] = useState(false);
   const [isPersonalInfoHovered, setIsPersonalInfoHovered] = useState(false);
   const [isSecurityHovered, setIsSecurityHovered] = useState(false);
@@ -19,7 +17,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectSection }) => {
   };
 
   return (
-    <aside className="w-64 h-screen bg-white border-r-2 border-gray-300">
+    <aside className="w-64 bg-white border-r-2 border-gray-300">
       <div className="text-center mb-4">
         <h1 className="text-2xl font-bold">My Profile</h1>
       </div>
@@ -38,7 +36,6 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectSection }) => {
         <ul className="space-y-2">
           <li>
             <button
-              onClick={() => onSelectSection('personal-info')}
               className="flex items-center p-2 text-black bg-gray-300 font-bold text-lg w-full text-left"
             >
               <svg className="w-5 h-5 mr-2" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +49,6 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectSection }) => {
             <button
               onMouseEnter={() => setIsSecurityHovered(true)}
               onMouseLeave={() => setIsSecurityHovered(false)}
-              onClick={() => onSelectSection('security')}
               className={`flex items-center p-2 hover:drop-shadow-[0_4px_20px_rgba(0,0,0,0.1)] text-gray-400 hover:text-black hover:bg-gray-300 font-bold text-lg w-full text-left ${isSecurityHovered ? 'border-black' : ''}`}
             >
               <svg className="w-5 h-5 mr-2" width="17" height="22" viewBox="0 0 17 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +61,6 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectSection }) => {
             <button
               onMouseEnter={() => setIsPreferencesHovered(true)}
               onMouseLeave={() => setIsPreferencesHovered(false)}
-              onClick={() => onSelectSection('preferences')}
               className={`flex items-center p-2 hover:drop-shadow-[0_4px_20px_rgba(0,0,0,0.1)] text-gray-400 hover:text-black hover:bg-gray-300 font-bold text-lg w-full text-left ${isPreferencesHovered ? 'border-black' : ''}`}
             >
               <svg className="w-5 h-5 mr-2" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +73,6 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectSection }) => {
             <button
               onMouseEnter={() => setIsPaymentsHovered(true)}
               onMouseLeave={() => setIsPaymentsHovered(false)}            
-              onClick={() => onSelectSection('payments')}
               className={`flex items-center p-2 hover:drop-shadow-[0_4px_20px_rgba(0,0,0,0.1)] text-gray-400 hover:text-black hover:bg-gray-300 font-bold text-lg w-full text-left ${isPaymentsHovered ? 'border-black' : ''}`}
             >
               <svg className="w-5 h-5 mr-2" width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -94,4 +88,3 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectSection }) => {
 };
 
 export default Sidebar;
-

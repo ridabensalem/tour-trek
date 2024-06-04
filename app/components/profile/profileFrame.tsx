@@ -7,8 +7,8 @@ interface ProfileProps {
 
 const ProfileFrameElement: React.FC<ProfileProps> = ({ text, children }) => {
   return (
-    <div className="max-w-xl mx-auto p-4 border rounded-lg px-0 py-0">
-      <div className="text-center mb-4 bg-[#E0E0E0] pt-2">
+    <div className=" mx-auto border border-gray-300 px-0 py-0">
+      <div className="text-center mb-4 bg-gray-300 pt-2">
         <h2 className="text-lg font-semibold text-blue-800 flex justify-center items-center">
           {text}
           <span className='ml-2'>
