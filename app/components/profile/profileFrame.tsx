@@ -1,5 +1,4 @@
 'use client';
-import { PencilIcon } from '@heroicons/react/24/solid';
 import { FiEdit } from "react-icons/fi";
 interface ProfileProps {
   text: string;
