@@ -35,7 +35,7 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ user }) => {
         <div className="grid grid-cols-2 mr-2">
             <div className="flex flex-col">
                 <label className="mb-1 font-medium">Date of Birth</label>
-                <input type="date" value={user.email || "Not Available"} className="p-2 border rounded focus:border-pink-500 focus:outline-none" />
+                <input type="date" className="p-2 border rounded focus:border-pink-500 focus:outline-none" />
             </div>
             <div className="flex flex-col ml-2">
                 <label className="mb-1 font-medium">Gender</label>

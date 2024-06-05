@@ -3,6 +3,7 @@ import ClientOnly from "@/app/components/elementsUi/ClientOnly";
 import getUserProfile from "@/app/actions/getUserProfile";
 import ProfileFrameElement from "@/app/components/profile/profileFrame";
 import UserProfileCard from "@/app/components/profile/UserProfileCard";
+import Security from "../components/profile/Security";
 
 const ProfilePage = async () => {
   const userProfile = await getUserProfile();
@@ -21,7 +22,8 @@ const ProfilePage = async () => {
   return (
     <ClientOnly>
       <ProfileFrameElement text="Personalize Your Profile">
-        <UserProfileCard user={userProfile} />
+        {/* <UserProfileCard user={userProfile} /> */}
+        <Security/>
       </ProfileFrameElement>
     </ClientOnly>
   );
