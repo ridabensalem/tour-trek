@@ -1,4 +1,5 @@
 import ProfileFrameElement from "./profileFrame";
+
 interface UserProfileCardProps {
   user: {
     name: string | null;
@@ -8,8 +9,8 @@ interface UserProfileCardProps {
 
 const UserProfileCard: React.FC<UserProfileCardProps> = ({ user }) => {
   return (
-
-            <form className="space-y-4 m-4">
+    <ProfileFrameElement text="Personal information">
+    <form className="space-y-4 m-4 px-8">
             <div className="flex flex-col">
                 <label className="mb-1 font-medium">Username</label>
                 <input type="text" placeholder="" className="p-2 border rounded focus:border-pink-500 focus:outline-none" />
@@ -53,8 +54,8 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ user }) => {
                 </button>
                 <button type="submit" className="bg-pink-500 text-white px-5 py-1 rounded">save</button>
             </div>
-            </form>
-
+    </form>
+    </ProfileFrameElement>
   );
 }
 

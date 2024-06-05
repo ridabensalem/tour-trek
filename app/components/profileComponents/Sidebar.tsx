@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import Popup from '../elementsUi/Popup';
+import Popup from '../elementsUi/Popup'; 
 
 
 const Sidebar = () => {

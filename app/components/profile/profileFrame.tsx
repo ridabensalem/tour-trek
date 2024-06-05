@@ -7,7 +7,7 @@ interface ProfileProps {
 
 const ProfileFrameElement: React.FC<ProfileProps> = ({ text, children }) => {
   return (
-    <div className=" mx-auto border border-gray-300 px-0 py-0">
+    <div className=" mx-auto border border-gray-300 px-0 py-0 h-full">
       <div className="text-center mb-4 bg-gray-300 pt-2">
         <h2 className="text-lg font-semibold text-blue-800 flex justify-center items-center">
           {text}
