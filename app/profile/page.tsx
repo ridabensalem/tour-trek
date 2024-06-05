@@ -3,7 +3,9 @@ import ClientOnly from "@/app/components/elementsUi/ClientOnly";
 import getUserProfile from "@/app/actions/getUserProfile";
 import PersonalInfo from "../components/profile/PersonalInfo";
 import Sidebar from "../components/profileComponents/Sidebar";
-import ProfileFrameElement from "../components/profile/profileFrame";
+import Security from "../components/profile/security";
+import Payments from "../components/profile/Payment";
+import Preferences from "../components/profile/Preferences";
 
 const ProfilePage = async () => {
   const userProfile = await getUserProfile();
@@ -24,9 +26,10 @@ const ProfilePage = async () => {
         <div className="container mx-auto max-w-screen-lg flex">
             <Sidebar/>
             <main className="flex-grow">
-                <ProfileFrameElement text="Personalize Your Profile">
-                    <PersonalInfo user={userProfile} />
-                </ProfileFrameElement>
+                  {/* <PersonalInfo user={userProfile} /> */}
+                  {/* <Security /> */}
+                  {/* <Payments /> */}
+                <Preferences />
             </main>
         </div>
     </ClientOnly>
