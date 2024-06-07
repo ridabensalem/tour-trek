@@ -16,6 +16,7 @@ const ProfilePage = () => {
         {currentScreen === 'Security' && <Security />}
         {currentScreen === 'Payments' && <Payments />}
         {currentScreen === 'Preferences' && <Preferences />}
+        {currentScreen === 'PersonalInfo' && <Preferences />}
       </main>
     </div>
   );
