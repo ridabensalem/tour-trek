@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react';
 import Popup from '../elementsUi/Popup';
 
@@ -8,7 +9,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [selectedItem, setSelectedItem] = useState<string | null>('Personal information'); // Ensure the default is the exact name
+  const [selectedItem, setSelectedItem] = useState<string | null>('Personal information'); 
 
   const togglePopup = () => {
     setShowPopup(!showPopup);

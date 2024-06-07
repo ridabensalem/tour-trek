@@ -1,11 +1,6 @@
+"use client";
 import ProfileFrameElement from "./profileFrame";
 
-interface UserProfileCardProps {
-  user: {
-    name: string | null;
-    email: string | null;
-  }
-}
 
 const PersonalInfo = () => {
   return (
