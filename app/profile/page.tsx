@@ -9,11 +9,11 @@ import getUserProfile from "../actions/getUserProfile";
 // import PersonalInfo from "../components/profile/PersonalInfo"
 
 const ProfilePage = () => {
-  const [currentScreen, setCurrentScreen] = useState("PersonalInfo");
+  const [currentScreen, setCurretScreen] = useState("PersonalInfo");
 
   return (
     <div className="container mx-auto max-w-screen-lg flex">
-      <Sidebar setCurretScreen={setCurrentScreen} />
+      <Sidebar setCurretScreen={setCurretScreen} />
       <main className="flex-grow">
         {currentScreen === "Security" && <Security />}
         {currentScreen === "Payments" && <Payments />}
