@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import ProfileFrameElement from './profileFrame';
-import ProfilePage from '@/app/profile/layout';
+
 
 const Preferences = () => {
     const [currency, setCurrency] = useState('dollar');
@@ -43,7 +43,6 @@ const Preferences = () => {
     };
 
     return (
-        <ProfilePage>
         <ProfileFrameElement text="Preferences">
         <div className="flex flex-col items-center space-y-48 p-4 h-full">
             <div className="flex flex-row space-x-12 w-full justify-around">
@@ -112,7 +111,6 @@ const Preferences = () => {
             </div>
         </div>            
         </ProfileFrameElement>
-        </ProfilePage>
     );
 }
 
