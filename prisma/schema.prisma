@@ -18,13 +18,15 @@ model User {
   email           String?   @unique
   emailVerified   DateTime?
   telephone       Int? 
-  recoveryEmail   Int? 
+  recoveryEmail   String? 
   gender          String?
   image           String?
   hashedPassword  String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   favoriteIds     String[] @db.ObjectId
+  currency        String?
+  language        String?
 
   accounts Account[]
   listings Listing[]
