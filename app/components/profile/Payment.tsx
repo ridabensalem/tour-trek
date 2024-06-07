@@ -15,11 +15,10 @@ const Payments = () => {
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    // Handle form submission here
     event.preventDefault();
-    // Add your logic for form submission
+
     console.log("Form submitted!");
-    // Reset form state
+
     setShowForm(false);
 };
 
@@ -36,7 +35,7 @@ const Payments = () => {
                   <span className="text-zinc-500">****1714</span>
               </div>
           </div>
-          <div className="flex justify-end"> {/* This div aligns the button to the right */}
+          <div className="flex justify-end">
               <button className="text-rose-500 mr-4 p-1 font-bold border-2 border-transparent hover:border-rose-500 rounded-lg">remove</button>
           </div>
         </div>
