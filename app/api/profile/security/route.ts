@@ -29,7 +29,7 @@ export async function PUT(request: Request) {
     return NextResponse.json(user);
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json({ error: "internal Server Error" }, { status: 500 });
   }
 }
     //Delete user account endpoint
@@ -51,7 +51,7 @@ export async function DELETE(request: Request) {
       });
   
       // Return a success response
-      return NextResponse.json({ message: "User account deleted successfully" });
+      return NextResponse.json({ message: "user account deleted successfully" });
     } catch (error) {
       console.error(error);
       return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });

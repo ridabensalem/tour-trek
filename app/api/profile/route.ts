@@ -58,8 +58,8 @@ export async function GET(request: Request) {
 
     // Return the user data as a JSON response
     return NextResponse.json(currentUser);
-  } catch (error) {
-    console.error(error);
+  } catch (e) {
+    console.error(e);
     return NextResponse.error();
   }
 }

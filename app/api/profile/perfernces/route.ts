@@ -39,5 +39,5 @@ export async function POST(request: Request) {
     data: { currency, language },
   });
 
-  return NextResponse.json({ message: 'Preferences saved successfully' });
+  return NextResponse.json({ message: 'preferences saved successfully' });
 }
