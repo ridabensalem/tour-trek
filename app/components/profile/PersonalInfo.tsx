@@ -7,7 +7,7 @@ interface UserProfileCardProps {
   }
 }
 
-const UserProfileCard: React.FC<UserProfileCardProps> = ({ user }) => {
+const PersonalInfo = () => {
   return (
     <ProfileFrameElement text="Personal information">
     <form className="space-y-4 m-4 px-8">
@@ -19,7 +19,7 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ user }) => {
             <div className="grid grid-cols-2">
                 <div className="flex flex-col mr-2">
                     <label className="mb-1 font-medium">Name</label>
-                    <input type="text" value={user.name || "Not Available"} className="p-2 border rounded focus:border-pink-500 focus:outline-none" />
+                    <input type="text" value="" className="p-2 border rounded focus:border-pink-500 focus:outline-none" />
                 </div>
                 <div className="flex flex-col ml-2">
                     <label className="mb-1 font-medium">Surname</label>
@@ -29,7 +29,7 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ user }) => {
 
             <div className="flex flex-col">
                 <label className="mb-1 font-medium">Email</label>
-                <input type="email" value={user.email || "Not Available"} className="p-2 border rounded focus:border-pink-500 focus:outline-none" />
+                <input type="email" value="" className="p-2 border rounded focus:border-pink-500 focus:outline-none" />
             </div>
             <div className="flex flex-col">
                 <label className="mb-1 font-medium">Contact Number</label>
@@ -38,7 +38,7 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ user }) => {
             <div className="grid grid-cols-2 mr-2">
                 <div className="flex flex-col">
                     <label className="mb-1 font-medium">Date of Birth</label>
-                    <input type="date" value={user.email || "Not Available"} className="p-2 border rounded focus:border-pink-500 focus:outline-none" />
+                    <input type="date" value="" className="p-2 border rounded focus:border-pink-500 focus:outline-none" />
                 </div>
                 <div className="flex flex-col ml-2">
                     <label className="mb-1 font-medium">Gender</label>
@@ -58,5 +58,4 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ user }) => {
     </ProfileFrameElement>
   );
 }
-
-export default UserProfileCard;
+export default PersonalInfo;
