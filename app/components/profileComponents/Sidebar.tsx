@@ -1,7 +1,6 @@
-"use client";
-
 import React, { useState } from 'react';
 import Popup from '../elementsUi/Popup';
+
 interface SidebarProps {
   setCurretScreen: (screen: string) => void;
 }
@@ -9,7 +8,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [selectedItem, setSelectedItem] = useState<string | null>('Personal Information');
+  const [selectedItem, setSelectedItem] = useState<string | null>('Personal information'); // Ensure the default is the exact name
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
@@ -35,6 +34,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
       imageUrl : 'https://via.placeholder.com/100'
     }
   ];
+  
   const navItems = [
     {
       name: 'Personal information',
@@ -73,12 +73,11 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
       href: '/Payments',
       icon: (
         <svg className="w-5 h-5 mr-2" width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1.59954 5.19985H19.5995M5.19954 9.39985H8.19954M3.4 1H17.7996C19.1251 1 20.1996 2.07368 20.1996 3.39913L20.1999 12.401C20.1999 13.7265 19.1254 14.8 17.7999 14.8L3.40023 14.7998C2.07479 14.7998 1.00029 13.7253 1.00026 12.3999L1 3.40007C0.999962 2.07456 2.07449 1 3.4 1Z" stroke={hoveredItem === 'Payments' || selectedItem === 'Payments' ? "#000" : "#808080"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M1.59954 5.19985H19.5995M5.19954 9.39985H8.19954M3.4 1H17.7996C19.1251 1 20.1996 2.07368 20.1996 3.3992V12.7996C20.1996 14.1251 19.1251 15.1996 17.7996 15.1996H3.4C2.07447 15.1996 1 14.1251 1 12.7996V3.3992C1 2.07368 2.07447 1 3.4 1Z" stroke={hoveredItem === 'Payments' || selectedItem === 'Payments' ? "#000" : "#808080"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ),
     },
   ];
-
 
   return (
     <aside className="w-64 bg-white border-r-2 border-gray-300">
@@ -104,7 +103,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
                 onMouseEnter={() => handleMouseEnter(item.name)}
                 onMouseLeave={handleMouseLeave}
                 className={`flex items-center p-2 ${
-                  (selectedItem === item.name || (selectedItem === 'Personal Information' && item.name === 'Personal information')) ? 'text-black bg-gray-300 font-bold' : 'text-gray-400'
+                  selectedItem === item.name ? 'text-black bg-gray-300 font-bold' : 'text-gray-400'
                 } hover:text-black hover:bg-gray-300 text-lg w-full text-left`}
                 onClick={() => handleItemClick(item.name, item.screen)}
               >
