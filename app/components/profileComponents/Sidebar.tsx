@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
+
 import Popup from '../elementsUi/Popup';
 import Link from 'next/link';
-
 interface SidebarProps {
   setCurretScreen: (screen: string) => void;
 }
@@ -112,6 +112,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
               </button>
             </li>
           ))}
+
         </ul>
       </nav>
     </aside>
