@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-
 import Popup from '../elementsUi/Popup';
-import Link from 'next/link';
 interface SidebarProps {
   setCurretScreen: (screen: string) => void;
 }
@@ -11,7 +9,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const [selectedItem, setSelectedItem] = useState<string | null>('Personal Information');
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
@@ -25,7 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
     setHoveredItem(null);
   };
 
-  const handleItemClick = (item: string, screen: string) => { 
+  const handleItemClick = (item: string, screen: string) => {
     setSelectedItem(item);
     setCurretScreen(screen);
   };
@@ -81,6 +79,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
     },
   ];
 
+
   return (
     <aside className="w-64 bg-white border-r-2 border-gray-300">
       <div className="text-center mb-4">
@@ -104,7 +103,9 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
               <button
                 onMouseEnter={() => handleMouseEnter(item.name)}
                 onMouseLeave={handleMouseLeave}
-                className={`flex items-center p-2 ${selectedItem === item.name ? 'text-black bg-gray-300' : 'text-gray-400'} hover:text-black hover:bg-gray-300 font-bold text-lg w-full text-left`}
+                className={`flex items-center p-2 ${
+                  (selectedItem === item.name || (selectedItem === 'Personal Information' && item.name === 'Personal information')) ? 'text-black bg-gray-300 font-bold' : 'text-gray-400'
+                } hover:text-black hover:bg-gray-300 text-lg w-full text-left`}
                 onClick={() => handleItemClick(item.name, item.screen)}
               >
                 {item.icon}
@@ -112,7 +113,6 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
               </button>
             </li>
           ))}
-
         </ul>
       </nav>
     </aside>
