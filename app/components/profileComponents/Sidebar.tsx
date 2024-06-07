@@ -11,7 +11,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [selectedItem, setSelectedItem] = useState<string | null>(null); // New state for selected item
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
@@ -25,7 +25,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
     setHoveredItem(null);
   };
 
-  const handleItemClick = (item: string, screen: string) => { // New handleItemClick function
+  const handleItemClick = (item: string, screen: string) => { 
     setSelectedItem(item);
     setCurretScreen(screen);
   };

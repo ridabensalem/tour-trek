@@ -12,18 +12,27 @@ datasource db {
 model User {
   id              String @id @default(auto()) @map("_id") @db.ObjectId
   name            String?
+  surname         String?
+  username        String?
+  dateOfBirth     String?
   email           String?   @unique
   emailVerified   DateTime?
+  telephone       Int? 
+  recoveryEmail   String? 
+  gender          String?
   image           String?
   hashedPassword  String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   favoriteIds     String[] @db.ObjectId
+  currency        String?
+  language        String?
 
   accounts Account[]
   listings Listing[]
   reservations Reservation[]
   Reviews Review[]
+  paymentsMethods paymentMethod[] 
 }
 
 model Account {
@@ -47,17 +56,17 @@ model Account {
 
 model Listing {
   id             String @id @default(auto()) @map("_id") @db.ObjectId
-  title String
-  description String
-  imageSrc String
-  createdAt DateTime @default(now())
-  category  String
-  roomCount Int
-  bathroomCount Int
-  guestCount Int
-  locationValue String
-  userId String @db.ObjectId
-  price Int
+  title              String
+  description        String
+  imageSrc           String
+  createdAt          DateTime @default(now())
+  category           String
+  roomCount          Int
+  bathroomCount      Int
+  guestCount         Int
+  locationValue      String
+  userId             String @db.ObjectId
+  price              Int
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]
@@ -66,12 +75,12 @@ model Listing {
 
 model Reservation {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  userId String @db.ObjectId
-  listingId String @db.ObjectId  
-  startDate DateTime
-  endDate DateTime
-  totalPrice Int
-  createdAt DateTime @default(now())
+  userId            String @db.ObjectId
+  listingId         String @db.ObjectId  
+  startDate         DateTime
+  endDate           DateTime
+  totalPrice        Int
+  createdAt         DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
@@ -79,19 +88,26 @@ model Reservation {
 
 model Offer {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  userId String @db.ObjectId
-  offerId String @db.ObjectId  
-  startDate DateTime
-  endDate DateTime
+  userId        String @db.ObjectId
+  offerId       String @db.ObjectId  
+  startDate     DateTime
+  endDate       DateTime
 
   listing Listing @relation(fields: [userId], references: [id])
 }
 
 model Review {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  authorId String @db.ObjectId
-  startDate DateTime
-  Comment String
+  authorId      String @db.ObjectId
+  startDate     DateTime
+  Comment       String
 
   author User @relation(fields: [authorId], references: [id])
+}
+
+model paymentMethod{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String @db.ObjectId
+  provider       String?   
+  user User @relation(fields: [userId], references: [id])
 }
