@@ -1,38 +1,27 @@
-import EmptyState from "@/app/components/elementsUi/EmptyState";
-import ClientOnly from "@/app/components/elementsUi/ClientOnly";
-import getUserProfile from "@/app/actions/getUserProfile";
-import PersonalInfo from "../components/profile/PersonalInfo";
+"use client";
+import React, { useState } from "react";
 import Sidebar from "../components/profileComponents/Sidebar";
 import Security from "../components/profile/security";
+import ProfileFrameElement from "../components/profile/profileFrame";
 import Payments from "../components/profile/Payment";
 import Preferences from "../components/profile/Preferences";
+import getUserProfile from "../actions/getUserProfile";
+// import PersonalInfo from "../components/profile/PersonalInfo"
 
-const ProfilePage = async () => {
-  const userProfile = await getUserProfile();
-
-  if (!userProfile) {
-    return (
-      <ClientOnly>
-        <EmptyState
-          title="No profile found"
-          subtitle="Please login to view your profile."
-        />
-      </ClientOnly>
-    );
-  }
+const ProfilePage = () => {
+  const [currentScreen, setCurrentScreen] = useState("PersonalInfo");
 
   return (
-    <ClientOnly>
-        <div className="container mx-auto max-w-screen-lg flex">
-            <Sidebar/>
-            <main className="flex-grow">
-                  {/* <PersonalInfo user={userProfile} /> */}
-                  {/* <Security /> */}
-                  {/* <Payments /> */}
-                <Preferences />
-            </main>
-        </div>
-    </ClientOnly>
+    <div className="container mx-auto max-w-screen-lg flex">
+      <Sidebar setCurretScreen={setCurrentScreen} />
+      <main className="flex-grow">
+        {currentScreen === "Security" && <Security />}
+        {currentScreen === "Payments" && <Payments />}
+        {currentScreen === "Preferences" && <Preferences />}
+        {/* {currentScreen === "PersonalInfo" && <PersonalInfo user={getUserProfile}/>} */}
+      </main>
+    </div>
   );
-}
+};
+
 export default ProfilePage;
