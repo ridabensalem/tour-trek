@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import ProfileFrameElement from './profileFrame';
+import ProfilePage from '@/app/profile/layout';
 
 const Payments = () => {
   const [showForm, setShowForm] = useState(false);
@@ -24,6 +25,7 @@ const Payments = () => {
 };
 
   return (
+    <ProfilePage>
     <ProfileFrameElement text="Payments">
     <div>
       <div className="space-y-4 p-4 ">
@@ -72,6 +74,7 @@ const Payments = () => {
       </div>
     </div>
     </ProfileFrameElement>
+    </ProfilePage>
   );
 };
 

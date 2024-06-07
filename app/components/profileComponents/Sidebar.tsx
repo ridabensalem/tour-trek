@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Popup from '../elementsUi/Popup'; 
+import Link from 'next/link';
 
 
 const Sidebar = () => {
@@ -34,6 +35,7 @@ const Sidebar = () => {
       {showPopup && <Popup onClose={togglePopup} />}
       <nav>
         <ul className="space-y-2">
+        <Link href="/PersonalInfo">
           <li>
             <button
               className="flex items-center p-2 text-black bg-gray-300 font-bold text-lg w-full text-left"
@@ -43,8 +45,11 @@ const Sidebar = () => {
                 <path d="M14.2 4.6C14.2 6.58822 12.5882 8.2 10.6 8.2C8.61177 8.2 7 6.58822 7 4.6C7 2.61177 8.61177 1 10.6 1C12.5882 1 14.2 2.61177 14.2 4.6Z" stroke="#000" strokeWidth="2"/>
               </svg>
               Personal information
+              
             </button>
           </li>
+          </Link>
+          <Link href="/Security">
           <li>
             <button
               onMouseEnter={() => setIsSecurityHovered(true)}
@@ -57,6 +62,8 @@ const Sidebar = () => {
               Security
             </button>
           </li>
+          </Link>
+          <Link href="/Preferences">
           <li>
             <button
               onMouseEnter={() => setIsPreferencesHovered(true)}
@@ -69,6 +76,8 @@ const Sidebar = () => {
               Preferences
             </button>
           </li>
+          </Link>
+          <Link href="/Payment">
           <li>
             <button
               onMouseEnter={() => setIsPaymentsHovered(true)}
@@ -81,6 +90,7 @@ const Sidebar = () => {
               Payments
             </button>
           </li>
+          </Link>
         </ul>
       </nav>
     </aside>
