@@ -48,16 +48,26 @@ export async function PUT(request: Request) {
 // Handler for the GET request
 export async function GET(request: Request) {
   try {
-    // Get the current user
     const currentUser = await getCurrentUser();
 
-    // If there is no current user, return an error response
     if (!currentUser) {
       return NextResponse.error();
     }
 
-    // Return the user data as a JSON response
-    return NextResponse.json(currentUser);
+    const userProfile = await prisma.user.findUnique({
+      where: { id: currentUser.id },
+      select: {
+        username: true,
+        createdAt: true,
+        image: true,
+      },
+    });
+
+    if (!userProfile) {
+      return NextResponse.error();
+    }
+
+    return NextResponse.json(userProfile);
   } catch (e) {
     console.error(e);
     return NextResponse.error();

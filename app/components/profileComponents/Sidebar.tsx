@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Popup from '../elementsUi/Popup';
 
 interface SidebarProps {
@@ -8,7 +8,26 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [selectedItem, setSelectedItem] = useState<string | null>('Personal information'); // Ensure the default is the exact name
+  const [selectedItem, setSelectedItem] = useState<string | null>('Personal information');
+  const [profile, setProfile] = useState<any>(null); // State to store user profile data
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch('../api/profile');
+        if (response.ok) {
+          const userProfile = await response.json();
+          setProfile(userProfile);
+        } else {
+          console.error('Failed to fetch profile:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching user profile:', error);
+      }
+    };
+
+    fetchProfile();
+  }, []);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
@@ -26,14 +45,6 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
     setSelectedItem(item);
     setCurretScreen(screen);
   };
-
-  const profile = [
-    {
-      username : '@MJ',
-      joinDate : '8-05-2024',
-      imageUrl : 'https://via.placeholder.com/100'
-    }
-  ];
   
   const navItems = [
     {
@@ -84,16 +95,18 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
       <div className="text-center mb-4">
         <h1 className="text-2xl font-bold">My Profile</h1>
       </div>
-      <div className="text-center mb-4">
-        <img
-          src={profile[0].imageUrl}
-          alt="Profile"
-          className="mx-auto rounded-full"
-          onClick={togglePopup}
-        />
-        <h2 className="mt-2 text-lg font-semibold">{profile[0].username}</h2>
-        <p className="text-sm text-gray-900">Joined on: {profile[0].joinDate}</p>
-      </div>
+      {profile && (
+        <div className="text-center mb-4">
+          <img
+            src={profile.image}
+            alt="Profile"
+            className="mx-auto rounded-full w-24 h-24 cursor-pointer"
+            onClick={togglePopup}
+          />
+          <h2 className="mt-2 text-lg font-semibold">@{profile.username}</h2>
+          <p className="text-sm text-gray-900">Joined on: {new Date(profile.createdAt).toLocaleDateString()}</p>
+        </div>
+      )}
       {showPopup && <Popup onClose={togglePopup} />}
       <nav>
         <ul className="space-y-2">
