@@ -17,13 +17,23 @@ export async function PUT(request: Request) {
   if (!currentUser) {
     return NextResponse.error();
   }
-    const hashedPassword = await bcrypt.hash(password, 12);
+  // Prepare the update data object
+  const updateData: any = {};
+
+    // If password is provided, hash it and add to update data
+    if (password) {
+      updateData.hashedPassword = await bcrypt.hash(password, 12);
+    }
+    // If recoveryEmail is provided, add to update data
+    if (recoveryEmail) {
+      updateData.recoveryEmail = recoveryEmail;
+    }
 
     const user = await prisma.user.update({
         where: {
             id: currentUser.id
           },
-      data: { hashedPassword, recoveryEmail  },
+      data:  updateData,  
     });
 
     return NextResponse.json(user);
