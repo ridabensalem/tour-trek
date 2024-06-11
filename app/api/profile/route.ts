@@ -47,6 +47,12 @@ export async function GET(request: Request) {
       where: { id: currentUser.id },
       select: {
         username: true,
+        name: true,
+        surname: true,
+        email: true,
+        telephone: true,
+        dateOfBirth: true,
+        gender: true,
         createdAt: true,
         image: true,
       },
