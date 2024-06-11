@@ -98,16 +98,16 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
       {profile && (
         <div className="text-center mb-4">
           <img
-            src={profile.image}
+            src={profile.image || '/images/placeholder.jpg'}
             alt="Profile"
-            className="mx-auto rounded-full w-24 h-24 cursor-pointer"
+            className="mx-auto rounded-full w-24 h-24 cursor-pointer object-cover"
             onClick={togglePopup}
           />
           <h2 className="mt-2 text-lg font-semibold">@{profile.username}</h2>
           <p className="text-sm text-gray-900">Joined on: {new Date(profile.createdAt).toLocaleDateString()}</p>
         </div>
       )}
-      {showPopup && <Popup onClose={togglePopup} />}
+      {showPopup && <Popup onClose={togglePopup} profileImage={profile?.image} />}
       <nav>
         <ul className="space-y-2">
           {navItems.map((item) => (
