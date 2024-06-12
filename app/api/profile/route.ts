@@ -16,23 +16,22 @@ export async function PUT(request: Request) {
     // Parse the request body as JSON
     const body = await request.json();
 
-    // Destructure the image URL from the request body
-    const { image } = body;
+    // Destructure the fields from the request body
+    const { image ,username, name, surname, email, tel, dateOfBirth, gender } = body;
 
-    // Update the user's profile image in the database
+    // Update the user's profile in the database
     const user = await prisma.user.update({
       where: { id: currentUser.id },
-      data: { image },
+      data: { image, username, name, surname, email, tel, dateOfBirth, gender },
     });
 
     // Return the updated user profile as a JSON response
     return NextResponse.json(user);
   } catch (error) {
-    console.error('Error updating profile image:', error);
+    console.error('Error updating profile:', error);
     return NextResponse.error();
   }
 }
-
 
 // Handler for the GET request
 export async function GET(request: Request) {
@@ -50,7 +49,7 @@ export async function GET(request: Request) {
         name: true,
         surname: true,
         email: true,
-        telephone: true,
+        tel: true,
         dateOfBirth: true,
         gender: true,
         createdAt: true,
@@ -68,6 +67,7 @@ export async function GET(request: Request) {
     return NextResponse.error();
   }
 }
+
 // Handler for the DELETE request
 export async function DELETE(request: Request) {
   try {
