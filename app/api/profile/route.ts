@@ -17,12 +17,12 @@ export async function PUT(request: Request) {
     const body = await request.json();
 
     // Destructure the fields from the request body
-    const { username, name, surname, email, tel, dateOfBirth, gender } = body;
+    const { image ,username, name, surname, email, tel, dateOfBirth, gender } = body;
 
     // Update the user's profile in the database
     const user = await prisma.user.update({
       where: { id: currentUser.id },
-      data: { username, name, surname, email, tel, dateOfBirth, gender },
+      data: { image, username, name, surname, email, tel, dateOfBirth, gender },
     });
 
     // Return the updated user profile as a JSON response
