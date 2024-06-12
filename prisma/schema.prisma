@@ -1,5 +1,3 @@
-
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -17,7 +15,7 @@ model User {
   dateOfBirth     String?
   email           String?   @unique
   emailVerified   DateTime?
-  telephone       Int? 
+  tel             String?    
   recoveryEmail   String? 
   gender          String?
   image           String?
@@ -43,7 +41,7 @@ model Account {
   providerAccountId  String
   refresh_token      String?  @db.String
   access_token       String?  @db.String
-  expires_at         Int?
+  expires_at         String?
   token_type         String?
   scope              String?
   id_token           String?  @db.String
