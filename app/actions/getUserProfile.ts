@@ -13,8 +13,9 @@ export default async function getUserProfile() {
       id: currentUser.id,
     },
     select: {
-        name: true,
-        email: true,
+        username: true,
+        createdAt: true,
+        image: true
     },
   });
 
