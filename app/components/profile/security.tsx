@@ -1,51 +1,48 @@
-'use client';
 import { useState } from 'react';
 import ProfileFrameElement from './profileFrame';
-import { toast } from "react-hot-toast";
-import axios from "axios";
-import { 
-  FieldValues, 
-  SubmitHandler,
-  useForm
-} from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { toast } from 'react-hot-toast';
+import axios from 'axios';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 
-const Security = () => { 
+const Security = () => {
   const [showPasswordInputs, setShowPasswordInputs] = useState(false);
   const [showRecoveryInput, setShowRecoveryInput] = useState(false);
   const [showDeleteAccountForm, setShowDeleteAccountForm] = useState(false);
   const [showFeedbackTextarea, setShowFeedbackTextarea] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  
+
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const { 
-    register, 
+  const {
+    register,
     handleSubmit,
-    formState: {
-      errors,
-    },
+    formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      recoveryEmail: ''
+      recoveryEmail: '',
     },
   });
+
   const togglePasswordInputs = () => {
-    setShowPasswordInputs(prevState => !prevState);
+    setShowPasswordInputs((prevState) => !prevState);
   };
+
   const handleCurrentPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentPassword(e.target.value);
   };
+
   const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setConfirmPassword(e.target.value);
   };
+
   const handleNewPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewPassword(e.target.value);
   };
-    
+
   const handleSubmitPassword = () => {
     // Validation logic
     if (!currentPassword || !newPassword || !confirmPassword) {
@@ -62,10 +59,11 @@ const Security = () => {
     setIsLoading(true);
 
     // API call to update the password
-    axios.put('/api/profile/security', {
-      currentPassword,
-      newPassword,
-    })
+    axios
+      .put('/api/profile/security', {
+        currentPassword,
+        newPassword,
+      })
       .then(() => {
         toast.success('Password updated successfully!');
         // Reset fields
@@ -73,7 +71,7 @@ const Security = () => {
         setNewPassword('');
         setConfirmPassword('');
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response && error.response.status === 400) {
           toast.error('Failed to update password. Please try again.');
         } else {
@@ -86,13 +84,32 @@ const Security = () => {
       });
   };
 
-
   const toggleRecoveryInput = () => {
-    setShowRecoveryInput(prevState => !prevState);
+    setShowRecoveryInput((prevState) => !prevState);
+  };
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    setIsLoading(true);
+
+    axios
+      .put('/api/profile/security', { recoveryEmail: data.recoveryEmail })
+      .then(() => {
+        toast.success('Recovery email updated!');
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 400) {
+          toast.error('Something went wrong!');
+        } else {
+          toast.error('Something went wrong!');
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const toggleDeleteAccountForm = () => {
-    setShowDeleteAccountForm(prevState => !prevState);
+    setShowDeleteAccountForm((prevState) => !prevState);
   };
 
   const handleContinue = (event: React.FormEvent<HTMLFormElement>) => {
@@ -104,49 +121,32 @@ const Security = () => {
     setShowFeedbackTextarea(false);
   };
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setIsLoading(true);
-
-    axios.put('/api/profile/security', { recoveryEmail: data.recoveryEmail })
-      .then(() => {
-        toast.success('Recovery email updated!');
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 400 ) {
-          toast.error('Something went wrong!');
-        } else {
-          toast.error('Something went wrong!');
-        }
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
   const handleDeleteAccount = () => {
     // Logic to delete the account
-    axios.delete('/api/profile/security')
+    axios
+      .delete('/api/profile/security')
       .then(() => {
         toast.success('Your account has been deleted successfully.');
-        // Additional logic like redirecting the user 
+        // Additional logic like redirecting the user
         router.refresh();
-        router.push("/");
+        router.push('/');
       })
-      .catch(error => {
+      .catch((error) => {
         toast.error('Failed to delete your account. Please try again later.');
         console.error('Error deleting account:', error);
       });
   };
-  
+
   return (
     <ProfileFrameElement text="Security">
       <div className="py-2 w-full mx-auto bg-white space-y-6 mb-4 px-6">
         <p className="text-base font-bold">
           Manage your security settings, set up secure authentication, or delete your account.
         </p>
-      
+
         <div className="space-y-2">
-  <div className="flex justify-between items-center">
-    <div>
+  <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+    <div className="mb-2 md:mb-0">
       <h2 className="text-lg font-semibold mt-4">Password</h2>
       <p className="text-base text-zinc-500 dark:text-zinc-400 border-b-2 w-[360px]">
         Last updated 1 day ago
@@ -154,14 +154,14 @@ const Security = () => {
     </div>
     <button
       onClick={togglePasswordInputs}
-      className="bg-pink-500 text-white px-4 py-2 rounded-md relative top-2 w-[70px]"
+      className="bg-pink-500 text-white px-4 py-2 rounded-md md:w-[70px]"
     >
       {showPasswordInputs ? 'Hide' : 'Reset'}
     </button>
   </div>
 
   {showPasswordInputs && (
-    <div className="space-y-2 w-[350px] mx-auto">
+    <div className="space-y-2 w-full md:w-[350px] mx-auto">
       <input
         type="password"
         placeholder="Current Password"
@@ -185,9 +185,7 @@ const Security = () => {
       />
       <button
         onClick={handleSubmitPassword}
-        className={`bg-[#162448] text-white px-4 py-2 rounded-md relative top-2 ${
-          isLoading ? 'opacity-50 pointer-events-none' : ''
-        }`}
+        className={`bg-[#162448] text-white px-4 py-2 rounded-md w-full ${isLoading ? 'opacity-50 pointer-events-none' : ''}`}
       >
         {isLoading ? 'Updating...' : 'Update password'}
       </button>
@@ -195,23 +193,25 @@ const Security = () => {
   )}
 </div>
 
-      
+
         <div className="space-y-2 mt-2">
-          <div className="flex justify-between items-center">
-            <div>
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+            <div className="mb-2 md:mb-0">
               <h2 className="text-lg font-semibold">Recovery Email</h2>
-              <p className="text-base text-zinc-500 dark:text-zinc-400 border-b-2 w-[360px]">example@gmail.com</p>
+              <p className="text-base text-zinc-500 dark:text-zinc-400 border-b-2 w-[360px]">
+                example@gmail.com
+              </p>
             </div>
             <button
               onClick={toggleRecoveryInput}
-              className="bg-pink-500 text-white px-4 py-2 rounded-md w-[70px]"
+              className="bg-pink-500 text-white px-4 py-2 rounded-md md:w-[70px]"
             >
               {showRecoveryInput ? 'Hide' : 'Add'}
             </button>
           </div>
-          
+
           {showRecoveryInput && (
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 w-[350px] mx-auto">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 w-full md:w-[350px] mx-auto">
               <input
                 type="email"
                 placeholder="example@gmail.com"
@@ -221,7 +221,7 @@ const Security = () => {
               {errors.recoveryEmail && <span className="text-red-500">This field is required</span>}
               <button
                 type="submit"
-                className="bg-[#2C63EB] text-white px-4 py-2 rounded-md"
+                className="bg-[#2C63EB] text-white px-4 py-2 rounded-md w-full"
                 disabled={isLoading}
               >
                 {isLoading ? 'Adding...' : 'Add'}
@@ -229,16 +229,14 @@ const Security = () => {
             </form>
           )}
         </div>
-      
+
+
         <div className="space-y-2 mt-2">
           <div>
             <h2 className="text-lg font-semibold">Delete Account</h2>
             <p className="text-base text-zinc-500 dark:text-zinc-400 border-b-2 w-[358px]">
               Permanently delete your tourTrek.com account
-              <button
-                onClick={toggleDeleteAccountForm}
-                className="ml-2"
-              >
+              <button onClick={toggleDeleteAccountForm} className="ml-2">
                 {showDeleteAccountForm ? '▼' : '▶'}
               </button>
             </p>
@@ -256,18 +254,18 @@ const Security = () => {
                 </div>
                 <div className="flex items-center mb-2">
                   <input id="option2" type="radio" name="reason" className="text-blue-600" />
-                  <label className="ml-2 text-zinc-700">Privacy concerns</label>
+                  <label className="ml-2 text-zinc-700">PrivacyConcerns</label>
                 </div>
                 <div className="flex items-center mb-4">
                   <input id="option3" type="radio" name="reason" className="text-blue-600" />
                   <label className="ml-2 text-zinc-700">I want to remove all my data</label>
                 </div>
-                <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 relative left-[400px]">Continue</button>
+                <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 relative left-[400px]">
+                  Continue
+                </button>
               </form>
             </div>
-          )}
-
-          {showFeedbackTextarea && (
+          )}      {showFeedbackTextarea && (
             <div>
               <button onClick={handleBack} className="text-pink-500 mb-2 relative right-0">← Back</button>
               <div className="rounded-md flex flex-col items-end">
@@ -279,7 +277,7 @@ const Security = () => {
                   placeholder="Do you have any feedback you'd like to share before you go? We'll use it to fix problems and improve our services..."
                 />
                 <button type="submit" onClick={handleDeleteAccount} className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mt-2">
-                    Delete your account
+                  Delete your account
                 </button>
               </div>
             </div>
@@ -287,7 +285,7 @@ const Security = () => {
         </div>
       </div>
     </ProfileFrameElement>
-  ); 
-}; 
+  );
+};
 
 export default Security;

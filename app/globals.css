@@ -68,3 +68,29 @@ body,
   flex-grow: 1; 
   line-height: 40px; 
 }
+/* ************************** */
+.slide-up {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.slide-up.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+.container-sec {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+}
+
+.item {
+  display: flex;
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center items vertically */
+}
+
+/* Example styling for items */
+.item:nth-child(2) {
+  justify-content: flex-end; /* Align second item to the right */
+}

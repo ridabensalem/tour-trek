@@ -91,7 +91,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setCurretScreen }) => {
   ];
 
   return (
-    <aside className="w-64 bg-white border-r-2 border-gray-300">
+    <aside className="w-full bg-white sm:w-64 sm:border-r-2 sm:border-gray-300">
       <div className="text-center mb-4">
         <h1 className="text-2xl font-bold">My Profile</h1>
       </div>
