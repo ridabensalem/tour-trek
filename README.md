@@ -61,6 +61,7 @@
 - **[View booking places on the map]**
 - **[Like favorite destinations]**
 - **[View the added rents ]**
+- **[like a listing to add it to your favorites ]**
 
 
 
