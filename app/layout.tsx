@@ -5,7 +5,7 @@ import LoginModal from '@/app/components/modals/LoginModal';
 import RegisterModal from '@/app/components/modals/RegisterModal';
 import SearchModal from '@/app/components/modals/SearchModal';
 import RentModal from '@/app/components/modals/RentModal';
-
+import ChatBot from '@/app/components/chatBot/ChatBot';
 import ToasterProvider from '@/app/providers/ToasterProvider';
 
 import './globals.css'
@@ -33,6 +33,13 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+       <head>
+        {/* Add Font Awesome Stylesheet */}
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+      </head>
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
@@ -41,6 +48,7 @@ export default async function RootLayout({
           <SearchModal />
           <RentModal />
           <Navbar currentUser={currentUser} />
+          <ChatBot />
         </ClientOnly>
         <div className="pb-20 pt-28">
           {children}
