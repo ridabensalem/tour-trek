@@ -2,12 +2,12 @@
 import { useState } from 'react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import {
-  MainContainer,
+  MainContainer,//The overall container for the chat.
   ChatContainer,
-  MessageList,
+  MessageList,//This displays all the messages in the conversation.
   Message,
-  MessageInput,
-  TypingIndicator,
+  MessageInput,//The input field where the user can type a message and send it
+  TypingIndicator,//This shows a typing indicator when ChatGPT is processing the request.
 } from '@chatscope/chat-ui-kit-react';
 
 
