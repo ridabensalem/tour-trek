@@ -11,6 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@chatscope/chat-ui-kit-react": "^2.0.3",
     "@next-auth/prisma-adapter": "^1.0.5",
     "@prisma/client": "^4.11.0",
     "@testing-library/jest-dom": "^6.1.5",
