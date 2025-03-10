@@ -29,3 +29,25 @@ body,
     width: 30%;
   }
 }
+
+.predefined-msg{
+  background-color: lightslategrey !important;
+  display: flex;
+}
+
+.cs-chat-container .cs-message-input .cs-message-input__content-editor-wrapper:first-child {
+  background-color: white !important;
+  margin-left: 0px!important;
+}
+.cs-message-input__content-editor[data-placeholder]:empty:before{
+  background-color: white !important;
+}
+.cs-message-input__content-editor{
+  background-color: white !important;
+
+}
+.cs-conversation-header__user-name{
+  background-color: #3b82f7!important;
+  color: white !important;
+
+}
